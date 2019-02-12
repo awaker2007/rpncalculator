@@ -23,15 +23,15 @@ abstract class TwoNumberArithmetic(var position: Int): Operator {
         var result:BigDecimal? = null
         try {
             result = doArithmetic(d1, d2)
-            history.push {
-                stack.pop()
-                stack.push(d2)
-                stack.push(d1)
-            }
         } catch (e:Exception) {
             stack.push(d2)
             stack.push(d1)
             throw e
+        }
+        history.push {
+            stack.pop()
+            stack.push(d2)
+            stack.push(d1)
         }
         stack.push(result)
 
