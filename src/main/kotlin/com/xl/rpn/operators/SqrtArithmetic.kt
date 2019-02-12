@@ -21,7 +21,13 @@ class SqrtArithmetic (var position: Int): Operator {
         }
 
         val d = stack.pop()
-        val result = sqrt(d, 15)
+        var result:BigDecimal? = null
+        try {
+            result = sqrt(d, 15)
+        } catch (e:Exception) {
+            stack.push(d)
+            throw e
+        }
         stack.push(result)
         history.push {
             stack.pop()
