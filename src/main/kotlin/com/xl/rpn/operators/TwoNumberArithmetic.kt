@@ -20,15 +20,14 @@ abstract class TwoNumberArithmetic(var position: Int): Operator {
         val d1 = stack.pop()
         val d2 = stack.pop()
 
-        history.push {
-            stack.pop()
-            stack.push(d2)
-            stack.push(d1)
-        }
-
         var result:BigDecimal? = null
         try {
             result = doArithmetic(d1, d2)
+            history.push {
+                stack.pop()
+                stack.push(d2)
+                stack.push(d1)
+            }
         } catch (e:Exception) {
             stack.push(d2)
             stack.push(d1)
