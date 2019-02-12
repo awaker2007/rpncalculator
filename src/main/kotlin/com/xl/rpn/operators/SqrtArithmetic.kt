@@ -36,6 +36,13 @@ class SqrtArithmetic (var position: Int): Operator {
     }
 
     fun sqrt(number: BigDecimal, scale: Int): BigDecimal {
+        val d = number.compareTo(BigDecimal(0))
+        if(d == 0)
+            return BigDecimal(0)
+        else if(d < 0) {
+            throw Exception("sqrt number($number) should plus zero")
+        }
+
         val base = BigDecimal.valueOf(2.0)
         val precision = 100
         val mc = MathContext(precision, RoundingMode.HALF_UP)
