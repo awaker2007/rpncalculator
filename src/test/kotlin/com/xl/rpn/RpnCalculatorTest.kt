@@ -53,7 +53,6 @@ class RpnCalculatorTest {
         val calculator = RpnCalculator()
         calculator.input("12 2 /")
         assert(eq(calculator.stack(), stack(6)))
-        println("aaa")
         calculator.input("0 /")
         assert(eq(calculator.stack(), stack(6, 0)))
     }
